@@ -27,25 +27,25 @@ if not os.path.exists(csv_filename):
 
 
 while 1:
-    # 发命令读取第 1 通道
+    # read channal 1
     ser.write(b'MEAS:CHANnel? 1\r')
     time.sleep(interval_time)
     raw = ser.readline()  # 读取一行 bytes
 
-    # 解析
+    # get data
     decoded = raw.decode('ascii', errors='ignore').strip()      # '1,24.288,"CEL"'
     channel_str, temp_str, unit_str = decoded.split(',')
     unit_code = unit_str.strip('"')                            # 'CEL'
     unit_map = {'CEL':'°C', 'FAR':'°F', 'KEL':'K'}
     unit_symbol = unit_map.get(unit_code, unit_code)
 
-    # 获取当前时间戳
+    # get time
     timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
-    # 打印到控制台
+    # print
     print(f'{timestamp} — channel {channel_str} temp：{temp_str} {unit_symbol}')
 
-    # 追加写入 CSV
+    # writ to CSV
     with open(csv_filename, 'a', newline='') as f:
         writer = csv.writer(f)
         writer.writerow([timestamp, channel_str, temp_str, unit_symbol])
