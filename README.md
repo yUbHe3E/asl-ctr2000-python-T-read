@@ -1,0 +1,1 @@
+This is a simple script to get data from ASL CTR2000.
