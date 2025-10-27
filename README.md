@@ -14,11 +14,11 @@
    ```bash
    pip install -r requirements.txt
 2. Connect the ASL CTR2000 to your computer via RS-232 (e.g. USB-to-RS232 adapter).
-    Find which port it appears on:
-      Windows example: COM3
+    Find which port it appears on:\
+      Windows example: COM3\
       Linux example: /dev/ttyUSB0
 3. Open test.py and edit the serial config:
-   '''python
+   ```python
    ser = serial.Serial(
     port='COM3',          # change this to your port
     baudrate=9600,
@@ -26,21 +26,24 @@
     parity=serial.PARITY_NONE,
     stopbits=serial.STOPBITS_ONE,
     timeout=1
-)'''
-      Update port to match your system.
+   )
+   ```
+      Update port to match your system.\
       Make sure baudrate / parity / stopbits match the CTR2000 settings.
 4. Adjust logging settings:
-   '''python
-    interval_time = 1  # seconds between reads'''
-   ###Notice, 10 seconds may cause some error. Recommend is 1.
+   ```python
+    interval_time = 1  # seconds between reads
+   ```
+   **###Notice, 10 seconds may cause some error. Recommend is 1.**
 5. Run the logger:
-   '''bash
-    python test.py'''
+   ```bash
+    python test.py
+   ```
     The script will:
-      print timestamp + channel + temperature + unit to the console
+      print timestamp + channel + temperature + unit to the console\
       append the same data to a CSV file (created automatically)
-6. Stop logging:
-    Press Ctrl + C.
+6. Stop logging:\
+    Press Ctrl + C.\
     The CSV file remains in the working directory.
 
 ## Requirements
