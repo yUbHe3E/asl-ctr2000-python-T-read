@@ -18,6 +18,7 @@
       Windows example: COM3
       Linux example: /dev/ttyUSB0
 3. Open test.py and edit the serial config:
+   '''python
    ser = serial.Serial(
     port='COM3',          # change this to your port
     baudrate=9600,
@@ -25,14 +26,16 @@
     parity=serial.PARITY_NONE,
     stopbits=serial.STOPBITS_ONE,
     timeout=1
-)
+)'''
       Update port to match your system.
       Make sure baudrate / parity / stopbits match the CTR2000 settings.
 4. Adjust logging settings:
-    interval_time = 1  # seconds between reads
+   '''python
+    interval_time = 1  # seconds between reads'''
    ###Notice, 10 seconds may cause some error. Recommend is 1.
 5. Run the logger:
-    python test.py
+   '''bash
+    python test.py'''
     The script will:
       print timestamp + channel + temperature + unit to the console
       append the same data to a CSV file (created automatically)
